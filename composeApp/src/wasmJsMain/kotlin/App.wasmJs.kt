@@ -26,3 +26,10 @@ actual suspend fun getNotes(): List<Note> {
         noteApi.getNotes();
     }.getOrDefault(emptyList())
 }
+
+actual suspend  fun getCategories(): Collection<String> {
+    val noteApi = NoteApiProvider.noteApi
+    return runCatching {
+        noteApi.getCategories();
+    }.getOrDefault(emptyList())
+}

@@ -10,6 +10,10 @@ class DefaultNoteApi(private val client: HttpClient, host: String, port: Int): N
         return client.get(BASE_URL).body();
     }
 
+    override suspend fun getCategories(): List<String> {
+        return client.get("$BASE_URL/categories").body();
+    }
+
     override suspend fun addNote(note: Note) {
         client.post("$BASE_URL") {
             contentType(ContentType.Application.Json)

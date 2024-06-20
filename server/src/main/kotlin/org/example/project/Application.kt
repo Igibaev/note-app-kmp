@@ -56,6 +56,10 @@ fun Route.noteRoutes() {
             call.respond(noteService.getNotes())
         }
 
+        get("/categories") {
+            call.respond(noteService.getCategories())
+        }
+
         post {
             val note = call.receive<Note>()
             note.apply {

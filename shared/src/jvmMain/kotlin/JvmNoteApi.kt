@@ -15,4 +15,8 @@ class JvmNoteApi(private val noteService: NoteService): NoteApi {
     override suspend fun toggleNote(noteId: String) {
         noteService.toggleNote(noteId)
     }
+
+    override suspend fun getCategories(): List<String> {
+        return noteService.getCategories()
+    }
 }

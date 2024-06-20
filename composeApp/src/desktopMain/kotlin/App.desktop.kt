@@ -18,3 +18,7 @@ actual suspend fun saveNote(newNote: Note) {
 actual suspend fun getNotes(): List<Note> {
     return noteService.getNotes()
 }
+
+actual suspend fun getCategories(): Collection<String> {
+    return noteService.getCategories()
+}

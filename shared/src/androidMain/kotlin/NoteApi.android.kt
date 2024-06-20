@@ -16,13 +16,10 @@ actual fun initApi(): NoteApi {
         install(Logging) {
             level = LogLevel.ALL
         }
-//        defaultRequest {
-//            url {
-//                this.protocol = URLProtocol.HTTP
-//                this.host = "10.40.218.217"
-//
-//            }
-//        }
     }
-    return DefaultNoteApi(client, "10.40.218.217", SERVER_PORT)
+    return DefaultNoteApi(client, "10.18.1.182", SERVER_PORT)
+}
+
+actual fun secondApi(): NoteApi {
+    TODO("Not yet implemented")
 }

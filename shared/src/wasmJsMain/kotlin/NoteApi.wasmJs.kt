@@ -20,3 +20,7 @@ actual fun initApi(): NoteApi {
     }
     return DefaultNoteApi(client, "localhost", SERVER_PORT)
 }
+
+actual fun secondApi(): NoteApi {
+    TODO("Not yet implemented")
+}

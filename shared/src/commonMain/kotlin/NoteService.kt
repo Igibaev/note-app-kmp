@@ -3,6 +3,10 @@ class NoteService(private val repository: NoteRepository) {
         return repository.getNotes()
     }
 
+    suspend fun getCategories(): List<String> {
+        return repository.getCategories()
+    }
+
     suspend fun addNote(note: Note) {
         repository.addNote(note)
     }

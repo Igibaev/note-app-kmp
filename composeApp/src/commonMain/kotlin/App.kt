@@ -46,7 +46,7 @@ fun NotesApp() {
         notes = getNotes()
 
         // Load initial categories from database or API
-//        categories.addAll(getCategories())
+        categories.addAll(getCategories())
     }
 
     MaterialTheme {
@@ -70,7 +70,7 @@ fun NotesApp() {
                         val newNote = Note(
                             id = generateNumericId(),
                             content = noteContent,
-//                            category = noteCategory,
+                            category = noteCategory
                         )
                         noteContent = ""
                         noteCategory = ""
@@ -107,6 +107,8 @@ fun NotesApp() {
     }
 }
 
+expect suspend fun getCategories(): Collection<String>
+
 @Composable
 fun NoteInput(
     noteContent: String,
@@ -139,15 +141,15 @@ fun NoteInput(
                 }
             )
         }
-//        Spacer(modifier = Modifier.width(8.dp))
-//        Box(modifier = Modifier
-//            .weight(0.3f)
-//            .background(Color.LightGray)
-//            .border(1.dp, Color.Gray, RoundedCornerShape(3.dp))
-//            .padding(8.dp)
-//        ) {
-//            DropdownMenu(selectedCategory = noteCategory, categories = categories, onCategorySelected = onNoteCategoryChange, textStyle = textStyle)
-//        }
+        Spacer(modifier = Modifier.width(8.dp))
+        Box(modifier = Modifier
+            .weight(0.3f)
+            .background(Color.LightGray)
+            .border(1.dp, Color.Gray, RoundedCornerShape(3.dp))
+            .padding(8.dp)
+        ) {
+            DropdownMenu(selectedCategory = noteCategory, categories = categories, onCategorySelected = onNoteCategoryChange, textStyle = textStyle)
+        }
 
         Spacer(modifier = Modifier.width(8.dp))
         Button(onClick = onAddNote) {
@@ -190,7 +192,7 @@ fun NoteItem(note: Note, onDelete: (Note) -> Unit, onToggleDone: (Note) -> Unit)
             Spacer(modifier = Modifier.width(8.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(note.content, style = MaterialTheme.typography.body1)
-//                Text("Category: ${note.category}", style = MaterialTheme.typography.subtitle2)
+                Text("Category: ${note.category}", style = MaterialTheme.typography.subtitle2)
                 Text("Date: ${note.creationDate}", style = MaterialTheme.typography.subtitle2)
             }
             Spacer(modifier = Modifier.width(8.dp))

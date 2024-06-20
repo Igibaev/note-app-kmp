@@ -1,5 +1,6 @@
 class InMemoryNoteRepository: NoteRepository {
     private val notes = mutableListOf<Note>()
+    private val categories = listOf("Personal", "Work", "Study")
 
     override suspend fun getNotes(): List<Note> {
         return notes.toList()
@@ -21,5 +22,9 @@ class InMemoryNoteRepository: NoteRepository {
         notes.find { it.id == note.id }?.let {
             notes[notes.indexOf(it)] = note
         }
+    }
+
+    override suspend fun getCategories(): List<String> {
+        return categories.toList()
     }
 }
